@@ -37,6 +37,9 @@ public class ForumScreenTest extends TestBase {
 	
 	public ForumScreenTest() throws IOException {
 		super();
+		
+		
+		   
 		// TODO Auto-generated constructor stub
 	}
 	
