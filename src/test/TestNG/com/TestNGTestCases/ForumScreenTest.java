@@ -1,6 +1,8 @@
 package com.TestNGTestCases;
 
 import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.AssertJUnit;
 import static org.testng.Assert.assertEquals;
@@ -25,18 +27,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.AssertJUnit;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import com.ForumScreenTests.ForumScreen;
+import com.ForumScreen.ForumScreen;
 import com.LoginRgistrationPageTestCase.LoginPagee;
 import com.beust.jcommander.Strings;
-import com.saif.Base.TestBase;
 
-@Test
-public class ForumScreenTest extends TestBase {
+import Base.TestBase;
+import excelutils.ExcelUtil;
+
+public class ForumScreenTest extends TestBase  {
 	
 	public ForumScreenTest() throws IOException {
-		super();
+	super();
 		
 		
 		   
@@ -106,8 +110,10 @@ public class ForumScreenTest extends TestBase {
 	 LoginPagee loginobj;
 	
 	 ForumScreen forumobj;
+	 ExcelUtil excel;
 	 
-	 public static boolean verifypresenceofelement(WebElement element){
+	 @Test
+	public static boolean verifypresenceofelement(WebElement element){
 		 
 		 boolean actual;
 		  try{
@@ -133,47 +139,109 @@ public class ForumScreenTest extends TestBase {
      
      
 	
+	@DataProvider(name="getdata")
+	
+public String [][] data() throws Exception{
+		String testdatatopick="Invalid Credential";
+	//In case of data provider the  2d string declared should be of same size as the number of data returned from excel  	
+		String[][] userdata=new String[2][2];
+		
+		
+		
+    userdata=ExcelUtil.setExcelFile(ExcelUtil.testDataExcelPath, "sheet1",testdatatopick);
+    for(int i=0;i<2;i++){
+    	for(int j=0;j<2;j++){
+   // userdata[i][j]="Name";
+    		
+    		System.out.println("Hello"+userdata[i][j]);
+    	}
+    }
+  //  System.out.println("Hello");
+    return userdata;
+    
+		
+	
+	}
+	
 	
 	
 	
 	@BeforeMethod
 	
-	public void setup() throws IOException{
+	public void setup() throws Exception{
 		
 		initialization();
 		
 		loginobj=new LoginPagee();
 		
 		forumobj=new ForumScreen();
+		excel=new ExcelUtil();
+		 driver.get("https://topfan-web-production.herokuapp.com");
+		//excel.setExcelFile(ExcelUtil.testDataExcelPath, "sheet1");
+		
 		
 		}
+
+	
+	@Test(dataProvider="getdata")
 	
 	
+	 public void userlogin(String username1,String userpassword1) throws InterruptedException{
+			   
+		 loginobj.login1.click();
+			   
+		 loginobj.username.sendKeys(username1);
+			   
+		 loginobj.password.sendKeys(userpassword1);
+			   
+			   Thread.sleep(5000);
+			  
+				  
+				   
+			   
+			      
+			   
+			   loginobj.login.click();
+				   
+					  
+	 }
+		 
+	  
+   
+   
+   
    @Test(enabled=false)
-  public void createpostvalidate() throws InterruptedException {
+  public void createpostvalidate() throws Exception {
+	   
+	   String testdatatopick="Invalid Credential";
+	   
+	//   ExcelUtil.setExcelFile(ExcelUtil.testDataExcelPath, "sheet1",testdatatopick); 
+	   
+	  
+	 
+	  
+	  //testappproductionurl=prop.getProperty("https://topfan-web-qa.herokuapp.com/");
 	  
 	  
-	  
-	  testappproductionurl=prop.getProperty("url");
-	  
-	  
-	  driver.get(testappproductionurl);
+	  driver.get("https://topfan-web-production.herokuapp.com/");
 	  
 	  Thread.sleep(6000);
 	  
-	  loginobj.userlogin(prop.getProperty("usernametestapp"),prop.getProperty("userpasswordtestapp"));
+	  
+	 
+	  loginobj.userlogin("x","y");
 	  
 	  Thread.sleep(70000);
 	  
 	  //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	  
-	  forumobj.forum.click();
+	 // forumobj.forum.click();
 	  
-	  parent=driver.getWindowHandle();
+	 // parent=driver.getWindowHandle();
 	  
-	  forumobj.forumcreateplusicon.click();
+	 // forumobj.forumcreateplusicon.click();
 	  
-      childs= driver.getWindowHandles();
+     // childs= driver.getWindowHandles();
       
   /*  for(String child:childs){
 			 
@@ -186,7 +254,7 @@ public class ForumScreenTest extends TestBase {
 		 }*/
       
          // forumobj.placeholder.click();
-      
+     /* 
        String parent=driver.getWindowHandle();
       
       
@@ -216,7 +284,7 @@ public class ForumScreenTest extends TestBase {
  				 driver.switchTo().window(child);
  			 }
  		 }
-          
+       
       //  forumobj.Budlghtbrocos.click();
           
           //forumobj.BroncosLYnch2.click();
@@ -259,15 +327,16 @@ public class ForumScreenTest extends TestBase {
           
            
           
-           actualtextpostedbyuser=forumobj.createdpostxpath.getText();
+         //  actualtextpostedbyuser=forumobj.createdpostxpath.getText();
           
-           String id=driver.findElement(By.id("1004238")).getAttribute("1004238");
+      //     String id=driver.findElement(By.id("1004238")).getAttribute("1004238");
   
-           System.out.println(id);
+      //     System.out.println(id);
         
      
          
-           AssertJUnit.assertEquals(expectedtextpostedbyuser,actualtextpostedbyuser);
+        //   AssertJUnit.assertEquals(expectedtextpostedbyuser,actualtextpostedbyuser);
+           
            
            
           // actual=ForumScreenTest.verifypresenceofelement(forumobj.BroncosLynch2ofpost);
@@ -285,7 +354,7 @@ public class ForumScreenTest extends TestBase {
           // Assert.assertEquals(actual, expected);
             
             
-            actualusernameonpost =forumobj.usernameonpost.getText();
+         /*   actualusernameonpost =forumobj.usernameonpost.getText();
             
             
             Assert.assertTrue(actualusernameonpost.contains(expectedusernameonpost),"USername ") ;
@@ -299,7 +368,7 @@ public class ForumScreenTest extends TestBase {
             System.out.println("userstatusonpos=="+actualuserstatusonpost);
             
             Assert.assertEquals(actualuserstatusonpost, expecteduserstatusonpost);
-            
+            */
             
       }
    
@@ -342,7 +411,7 @@ public class ForumScreenTest extends TestBase {
 	      
 	      String actuallforummeassgealert =forumobj.errormesssagealert.getText();
 	      
-	      Assert.assertEquals(actuallforummeassgealert,expectedforumerrormessage );
+	      AssertJUnit.assertEquals(actuallforummeassgealert,expectedforumerrormessage );
 	      
 	      
 	      }
@@ -413,13 +482,13 @@ public class ForumScreenTest extends TestBase {
            
            System.out.println(actualtextonpostwithimage);
           
-           Assert.assertEquals(actualtextonpostwithimage,expectedpostbyuserwithimage );
+           AssertJUnit.assertEquals(actualtextonpostwithimage,expectedpostbyuserwithimage );
            
            actualusernameonpost =forumobj.usernameonpost.getText();
            
            System.out.println(actualusernameonpost);
            
-           Assert.assertTrue(actualusernameonpost.contains(expectedusernameonpost),"USername ") ;
+        //   AssertJUnit.assertTrue(actualusernameonpost.contains(expectedusernameonpost),"USername ") ;
            
            System.out.println("usernameonpost="+actualusernameonpost);
            
@@ -428,11 +497,11 @@ public class ForumScreenTest extends TestBase {
            
            System.out.println("userstatusonpos=="+actualuserstatusonpost);
            
-           Assert.assertEquals(actualuserstatusonpost, expecteduserstatusonpost);
+           AssertJUnit.assertEquals(actualuserstatusonpost, expecteduserstatusonpost);
            
            actualusernameonimage=forumobj.userprifileimageonpost.getAttribute("title");
            
-           Assert.assertEquals(actualusernameonimage,expectedusernameofimage);
+           AssertJUnit.assertEquals(actualusernameonimage,expectedusernameofimage);
            
            
            
@@ -468,10 +537,10 @@ public class ForumScreenTest extends TestBase {
         		}
         	}*/
            
-           @Test(enabled=true)
+           @Test(enabled=false)
            
            public void Validatelikfunctionalityonforum() throws Exception{
-        	   
+        	   System.out.println("Beak Point");
 
       	     testappproductionurl=prop.getProperty("url");
       		  
@@ -530,9 +599,9 @@ public class ForumScreenTest extends TestBase {
               
               forumobj.logouticon.click();
               
+              Thread.sleep(6000);
               
-              
-             loginobj.userlogin(prop.getProperty("kartik50"),prop.getProperty("Sam@123456789"));
+             loginobj.userlogin("kartik50", "Sam@123456789");
              
              Thread.sleep(6000);
      		  
@@ -549,13 +618,15 @@ public class ForumScreenTest extends TestBase {
    		     forumobj.forum.click();
    		     
    		     
-   		  actuallikecountbeforeclicking=forumobj.likecount.getText();
+   	  actuallikecountbeforeclicking=forumobj.likecount.getText();
+   	//	int a = Integer.parseInt(actuallikecountbeforeclickingg);
+   		
    		  
    		  System.out.println("like count before click=="+actuallikecountbeforeclicking);
    		  
    		  
    		  
-   		  Assert.assertEquals(actuallikecountbeforeclicking, expectedlikecountbeforeclicking);
+   		  AssertJUnit.assertEquals(expectedlikecountbeforeclicking,actuallikecountbeforeclicking);
    		  
    		  System.out.println("First Assertion successs");
    		  
@@ -604,7 +675,7 @@ public class ForumScreenTest extends TestBase {
    		 
    		 System.out.println("Like count after click=="+actuallikecountafterclicking);
    		 
-   		 Assert.assertEquals(actuallikecountafterclicking, expecedlikecountafterclicking);
+   		 AssertJUnit.assertEquals(actuallikecountafterclicking, expecedlikecountafterclicking);
    		 
    		 System.out.println("Second Assertion success");
    		 
@@ -635,7 +706,7 @@ public class ForumScreenTest extends TestBase {
            
            
    		 
-   		 Assert.assertEquals(actuallikecountafterclicking, expecedlikecountafterclicking);
+   		 AssertJUnit.assertEquals(actuallikecountafterclicking, expecedlikecountafterclicking);
    		 }
    		 
    		 
@@ -669,7 +740,7 @@ public class ForumScreenTest extends TestBase {
            
            @AfterMethod
            public void clean(){
-         	 // driver.close();
+         	 driver.close();
          	  
          	  
            }

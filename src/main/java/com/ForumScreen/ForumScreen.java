@@ -1,6 +1,9 @@
-package com.ForumScreenTests;
+package com.ForumScreen;
 
 import org.testng.AssertJUnit;
+
+import Base.TestBase;
+
 import org.testng.AssertJUnit;
 import org.testng.AssertJUnit;
 import org.testng.AssertJUnit;
@@ -17,10 +20,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocator;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.testng.AssertJUnit;
-
-
-
-import com.saif.Base.TestBase;
 
 public class ForumScreen extends TestBase {
 	

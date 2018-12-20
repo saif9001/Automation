@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.AssertJUnit;
 
-import com.saif.Base.TestBase;
+import Base.TestBase;
 
 public class Registrationwithfacebook extends TestBase {
 	

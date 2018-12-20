@@ -1,5 +1,6 @@
 package com.TestNGTestCases;
 
+
 import java.io.IOException;
 
 import org.testng.annotations.AfterMethod;
@@ -7,15 +8,20 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.LoginRgistrationPageTestCase.LoginPagee;
-import com.saif.Base.TestBase;
+
+import Base.TestBase;
+import excelutils.ExcelUtil;
 
 import org.testng.annotations.Test;
 
  
 
-public class LoginPageTest extends TestBase {
+public class LoginPageTest extends TestBase  {
 	
 	LoginPagee obj;
+	ExcelUtil excel;
+	
+	
 	
 	
   public LoginPageTest() throws IOException {
@@ -28,6 +34,8 @@ public class LoginPageTest extends TestBase {
 	 
 	   initialization();
 	   obj=new LoginPagee();
+	   excel=new ExcelUtil();
+	   
   }  
   
 

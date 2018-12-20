@@ -1,4 +1,4 @@
-package com.saif.Base;
+package Base;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -65,7 +65,7 @@ public class TestBase {
 		//driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICTWAITTIMEOUT, TimeUnit.SECONDS);
-		//String myUrl = prop.getProperty("facebookurl");
-		//driver.get("url");
+		//String myUrl = prop.getProperty("https://topfan-web-qa.herokuapp.com/");
+		//driver.get("https://topfan-web-qa.herokuapp.com/");
 	}
 }

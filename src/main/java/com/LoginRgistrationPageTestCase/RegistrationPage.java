@@ -2,7 +2,7 @@ package com.LoginRgistrationPageTestCase;
 
 import org.testng.AssertJUnit;
 
-import com.saif.Base.TestBase;
+import Base.TestBase;
 
 import java.io.IOException;
 import java.util.List;

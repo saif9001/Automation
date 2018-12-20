@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.AssertJUnit;
 
-import com.saif.Base.TestBase;
+import Base.TestBase;
 
 public class LoginPagee extends TestBase{
 	
@@ -31,15 +31,19 @@ public LoginPagee() throws IOException  {
 //WebElement of login and registration page
 
  @FindBy(xpath="//a[@class='login-btn']")
+public
  WebElement login1;
 
   @FindBy(id="user_name")
+public
   WebElement username;
 
    @FindBy(id="password")
+public
    WebElement password;
 
    @FindBy(id="login_btn")
+public
    WebElement login;
   
    @FindBy(linkText="Register")

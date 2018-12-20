@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.TestAppsaif.TestCases.ForumScreenTest">
+      <class name="com.TestNGTestCases.ForumScreenTest">
         <methods>
+          <include name="userlogin"/>
           <include name="clean"/>
-          <include name="Validatelikfunctionalityonforum"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- com.TestAppsaif.TestCases.ForumScreenTest -->
+      </class> <!-- com.TestNGTestCases.ForumScreenTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

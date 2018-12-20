@@ -8,7 +8,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.LoginRgistrationPageTestCase.Registrationwithfacebook;
-import com.saif.Base.TestBase;
+
+import Base.TestBase;
 
 public class ValidatefacebookregistrationTest extends TestBase{
 	
