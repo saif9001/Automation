@@ -5,7 +5,7 @@
     <classes>
       <class name="com.TestNGTestCases.ForumScreenTest">
         <methods>
-          <include name="userlogin"/>
+          <include name="userlogin" invocation-numbers="0 1"/>
           <include name="clean"/>
           <include name="setup"/>
         </methods>

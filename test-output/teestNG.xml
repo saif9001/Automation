@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" >
+<listeners>
+<listener class-name="testListeners.MethodInterceptorListner"/>
+<listener class-name="testListeners.ExtentReportingListener"/>
+<listener class-name="testListeners.RetryListener"/>
+</listeners>
+<test name="Test">
+  	<classes><c></c>&lt;cl&gt;&lt;cla&gt;&lt;clas&gt;&lt;class&gt;&lt;class &gt;&lt;class n&gt;&lt;class na&gt;&lt;class nam&gt;&lt;class name&gt;&lt;class name=&gt;&lt;class name=&quot;&gt;&lt;class name=&quot;&quot;&gt;&lt;class name=&quot;&quot;&gt;</classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
